@@ -22,7 +22,14 @@ final class ProductsTableViewModel: ProductsViewModel {
     //let newDummyProductObserver: Observer<Void, NoError>
     
     
-    let buttonAction = Action<Bool, Void, NoError> { value in
+    lazy var valid =  MutableProperty(true)
+    
+    
+    // Change this to somewhere where it's not an instance property
+    // http://stackoverflow.com/questions/30131492/how-to-implement-a-basic-uitextfield-input-uibutton-action-scenario-using-reac/30189155#30189155
+    // https://github.com/ReactiveCocoa/ReactiveCocoa/issues/2000
+    
+    lazy var buttonAction = Action<Bool, Void, NoError>(enabledIf: valid) { value in
         print("test action before returning signal producer")
         return SignalProducer<Void, NoError> { observer, _ in
         print("test action after returning signal producer")
