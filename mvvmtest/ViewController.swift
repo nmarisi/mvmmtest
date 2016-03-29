@@ -7,13 +7,33 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class ViewController: UIViewController {
-
+    
+    var viewModel: ProductsViewModel!
+    var buttonCocoaAction: CocoaAction!
+    @IBOutlet weak var testButton: UIButton!
+    
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let productDataProvider = TestProductDataProvider()
+        viewModel = ProductsTableViewModel(dataProvider: productDataProvider)
+        
+       //switch.addTarget(cocoaAction, action: CocoaAction.selector, forControlEvents: .ValueChanged)
+        
+        buttonCocoaAction = CocoaAction(viewModel.buttonAction, {
+            value in
+            
+            //let button = value as! UIButton
+            return true
+        })
+        
+        testButton.addTarget(buttonCocoaAction, action: CocoaAction.selector, forControlEvents: .TouchUpInside)
+        
     }
 
     override func didReceiveMemoryWarning() {
