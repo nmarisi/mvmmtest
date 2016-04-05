@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import enum Result.NoError
 
 // EXPLANATION:
 // Make sure that you can use another data provider if neccesary
