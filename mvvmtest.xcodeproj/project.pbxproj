@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37314F0C6C52B6B6DB5472D6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CCFE0AC0746E511402D2D78 /* Pods.framework */; };
 		4D6756801CB41ADC0054F6ED /* ProductCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D67567F1CB41ADC0054F6ED /* ProductCellViewModel.swift */; };
+		4D6756831CB422870054F6ED /* ProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6756821CB422870054F6ED /* ProductsViewController.swift */; };
 		4D782E981C9DE1630046547D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D782E971C9DE1630046547D /* AppDelegate.swift */; };
 		4D782E9A1C9DE1630046547D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D782E991C9DE1630046547D /* ViewController.swift */; };
 		4D782E9D1C9DE1630046547D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D782E9B1C9DE1630046547D /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		2D7AA213886AD72A1FBEF240 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		4D67567F1CB41ADC0054F6ED /* ProductCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductCellViewModel.swift; path = ViewModels/ProductCellViewModel.swift; sourceTree = "<group>"; };
+		4D6756821CB422870054F6ED /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsViewController.swift; path = Controllers/ProductsViewController.swift; sourceTree = "<group>"; };
 		4D782E941C9DE1630046547D /* mvvmtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D782E971C9DE1630046547D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D782E991C9DE1630046547D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D6756811CB422360054F6ED /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4D6756821CB422870054F6ED /* ProductsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		4D782E8B1C9DE1630046547D = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +83,7 @@
 		4D782E961C9DE1630046547D /* mvvmtest */ = {
 			isa = PBXGroup;
 			children = (
+				4D6756811CB422360054F6ED /* Controllers */,
 				4D782EB41C9F57780046547D /* DataProviders */,
 				4D782EB11C9F31B60046547D /* VIewModels */,
 				4D782EB01C9F31B20046547D /* Views */,
@@ -266,6 +277,7 @@
 				4D782EAF1C9F31AF0046547D /* ProductTableViewCell.swift in Sources */,
 				4D782E981C9DE1630046547D /* AppDelegate.swift in Sources */,
 				4D782EB61C9F57900046547D /* ProductDataProvider.swift in Sources */,
+				4D6756831CB422870054F6ED /* ProductsViewController.swift in Sources */,
 				4D782EAA1C9F307E0046547D /* Product.swift in Sources */,
 				4D782EB31C9F335C0046547D /* ProductsTableViewModel.swift in Sources */,
 			);
