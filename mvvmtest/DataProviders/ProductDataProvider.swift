@@ -21,16 +21,34 @@ protocol ProductDataProviderType {
 }
 
 final class TestProductDataProvider: ProductDataProviderType {
+
+    private lazy var products: [Product] = {
+    [unowned self] in
+        self.generateDummyProducts()
+    }()
+    
     
     func getListOfProducts() -> [Product] {
-        return generateDummyProduts()
+        return generateDummyProducts()
     }
     
     func fetchProducts() -> SignalProducer<[Product], NSError> {
-        return SignalProducer(value: generateDummyProduts())
+        return SignalProducer(value: products)
     }
     
-    private func generateDummyProduts() -> [Product] {
+    func addNewTestProduct() {
+        let test = Product(
+                  title: "Test Product",
+            description: "Organic, locally-sourced test",
+                  price: 9.99,
+              imageName: "eggs",
+                   tags: nil)
+        
+        products.append(test)
+        
+    }
+    
+    private func generateDummyProducts() -> [Product] {
         
         let eggs = Product(
                   title: "Free range eggs (6)",

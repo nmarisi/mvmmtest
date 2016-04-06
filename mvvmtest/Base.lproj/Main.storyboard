@@ -113,6 +113,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="Pzr-oJ-64C" id="Apx-Ec-RJC"/>
+                        <outlet property="testButton" destination="Chb-Cq-iuf" id="ocl-ae-LeW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,17 +10,28 @@ import UIKit
 import ReactiveCocoa
 import enum Result.NoError
 
-class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+final class ProductsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
    
-    var viewModel: ProductsTableViewModel?
-    var cellViewModels = MutableProperty([ProductCellViewModel]())
+    private var viewModel: ProductsTableViewModel?
+    private var cellViewModels = MutableProperty([ProductCellViewModel]())
+    private var testButtonAction: CocoaAction? // the UIButton has a week reference to the action, hence why we need to declare it here
+    
+    @IBOutlet weak var testButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 1. Instantiate a new view model
         viewModel = ProductsTableViewModel(dataProvider: TestProductDataProvider())
+        
+        setupBindings()
+        setupActions()
+    }
+    
+    func setupBindings() {
+    
         guard let vm = viewModel else {
             return
         }
@@ -39,6 +50,29 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
             self.tableView.reloadData()
         }
     }
+    
+    func setupActions() {
+
+        guard let vm = viewModel else {
+            return
+        }
+        
+        // The viewModel has the action's implementation.
+        // The CocoaAction acts as a bridge to the UIControl
+        testButtonAction = CocoaAction(vm.buttonAction) {
+            value in // the value is from the control,
+            //let button = value as! UIButton
+            
+            return true
+        }
+        
+        // Add action to the UIButton
+        testButton.addTarget(testButtonAction, action: CocoaAction.selector, forControlEvents: .TouchUpInside)
+        
+    }
+    
+    
+    
     
     
     // MARK: - UITableViewDatasource
