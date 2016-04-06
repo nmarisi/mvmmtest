@@ -38,10 +38,6 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         cellViewModels.producer.startWithNext { _ in
             self.tableView.reloadData()
         }
-        
-        
-
-
     }
     
     
@@ -58,6 +54,8 @@ class ProductsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCellWithIdentifier(String(ProductTableViewCell))
         as! ProductTableViewCell
+        
+            cell.configure(cellViewModels.value[indexPath.row])
        
         // TODO: Configure Cell
         return cell

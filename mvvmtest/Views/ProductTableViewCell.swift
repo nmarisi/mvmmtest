@@ -16,16 +16,13 @@ class ProductTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var tagsLabel: UILabel!
     
+    func configure(viewModel: ProductCellViewModel) {
+        
+        productTitle.text = viewModel.title
+        descriptionLabel.text = viewModel.description
+        priceLabel.text = String(viewModel.price)
+    }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    
 
 }
