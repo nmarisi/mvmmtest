@@ -69,10 +69,17 @@ final class ProductsViewController: UIViewController, UITableViewDelegate, UITab
         // Add action to the UIButton
         testButton.addTarget(testButtonAction, action: CocoaAction.selector, forControlEvents: .TouchUpInside)
         
+        // Observe action (each action has a signal)
+        vm.buttonAction.events.observeCompleted {
+            print("observed completed")
+        }
+        
+        // Refresh table when a next value is received
+        vm.buttonAction.values.observeNext {
+            self.tableView.reloadData()
+        }
+        
     }
-    
-    
-    
     
     
     // MARK: - UITableViewDatasource

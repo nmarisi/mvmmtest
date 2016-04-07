@@ -18,27 +18,13 @@ protocol ProductsViewModel: class {
 }
     
 final class ProductsTableViewModel: ProductsViewModel {
-    
-    // Inputs
-    //let newDummyProductObserver: Observer<Void, NoError>
-    
-    // Change this to somewhere where it's not an instance property
-    // http://stackoverflow.com/questions/30131492/how-to-implement-a-basic-uitextfield-input-uibutton-action-scenario-using-reac/30189155#30189155
-    // https://github.com/ReactiveCocoa/ReactiveCocoa/issues/2000
-    
-    lazy var buttonAction = Action<Bool, Void, NoError>(enabledIf: ConstantProperty(true)) { value in
-        print("test action before returning signal producer")
-        return SignalProducer<Void, NoError> { observer, _ in
-        print("test action after returning signal producer")
-            observer.sendCompleted()
-        }
-    }
-    
-    
-    private let dataProvider: ProductDataProviderType
+   private let dataProvider: ProductDataProviderType
     
     private var products: MutableProperty<[Product]>
     private let productsObserver = Observer<[Product], NSError>()
+    
+    // Inputs
+    var buttonAction: Action<Bool, Void, NoError>
     
     // Outputs 
     var productCellViewModels: SignalProducer<[ProductCellViewModel], NSError>
@@ -47,12 +33,25 @@ final class ProductsTableViewModel: ProductsViewModel {
         
         self.dataProvider = dataProvider
         self.products = MutableProperty([Product]())
-        
+    
+        buttonAction = Action<Bool, Void, NoError>() { value in
+        print("test action before returning signal producer")
+        return SignalProducer<Void, NoError> { observer, _ in
+            dataProvider.addNewTestProduct()
+        print("test action after returning signal producer")
+            observer.sendNext()
+            observer.sendCompleted()
+        }
+    }
         let signalProducer = dataProvider.fetchProducts()
+        
+        // We need to map a SignalProducer from Products (from the model)
+        // to ProductCellViewModels
        
         // As far as i can see this and 2// are equal
         productCellViewModels =
         signalProducer.flatMap(FlattenStrategy.Latest) { (products) -> SignalProducer<[ProductCellViewModel], NSError> in
+            
             
             let viewModels = products.map({ product -> ProductCellViewModel in
                 return ProductCellViewModel(title: product.title, description: product.description, price: product.price)
@@ -61,6 +60,9 @@ final class ProductsTableViewModel: ProductsViewModel {
             return SignalProducer<[ProductCellViewModel], NSError>(value: viewModels)
         }
         
+        /*
+        
+        
         // Equal to above?
         productCellViewModels = signalProducer.map { products -> [ProductCellViewModel] in
            
@@ -68,10 +70,14 @@ final class ProductsTableViewModel: ProductsViewModel {
                 return ProductCellViewModel(title: product.title, description: product.description, price: product.price)
             })
         }
+ 
+ */
         
 
     }
     
+    
+    // This is not in use as part of hte app, but just a way to test things
     func bindViewModel() {
         
         // Get signal producer

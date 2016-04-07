@@ -18,6 +18,7 @@ protocol ProductDataProviderType {
     func getListOfProducts() -> [Product]
     
     func fetchProducts() -> SignalProducer<[Product], NSError>
+    func addNewTestProduct()
 }
 
 final class TestProductDataProvider: ProductDataProviderType {
