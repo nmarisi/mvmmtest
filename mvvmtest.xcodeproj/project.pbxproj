@@ -23,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		2D7AA213886AD72A1FBEF240 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		4D1082DF1CBC4AEA003B6903 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		4D67567F1CB41ADC0054F6ED /* ProductCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductCellViewModel.swift; path = ViewModels/ProductCellViewModel.swift; sourceTree = "<group>"; };
 		4D6756821CB422870054F6ED /* ProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProductsViewController.swift; path = Controllers/ProductsViewController.swift; sourceTree = "<group>"; };
 		4D782E941C9DE1630046547D /* mvvmtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mvvmtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +92,7 @@
 				4D782E9E1C9DE1630046547D /* Assets.xcassets */,
 				4D782EA01C9DE1630046547D /* LaunchScreen.storyboard */,
 				4D782EA31C9DE1630046547D /* Info.plist */,
+				4D1082DF1CBC4AEA003B6903 /* MyPlayground.playground */,
 			);
 			path = mvvmtest;
 			sourceTree = "<group>";
